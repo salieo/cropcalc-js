@@ -1,0 +1,12 @@
+#NPM install artifacts
+node_modules/
+package-lock.json
+
+#Coverage artifacts
+.nyc_output/
+
+#Dev stuff
+dev/
+
+#Visual Studio Code configs
+.vscode/

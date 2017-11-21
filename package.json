@@ -1,15 +1,21 @@
 {
   "author": "Salieo <hello@salieo.com>",
   "name": "cropcalc-js",
-  "description": "Salieo custom crop calculation",
+  "description": "Custom crop calculation based on data from the Salieo API.",
   "version": "0.9.0",
   "homepage": "https://www.salieo.com",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/salieo/cropcalc-js.git"
+  "repository": "salieo/cropcalc-js",
+  "main": "src/cropcalc.js",
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "nyc": "^11.3.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0"
   },
-  "main": "cropcalc.js",
-  "devDependencies": {},
-  "scripts": {}
+  "scripts": {
+    "test": "nyc --reporter=none tape ./test/test.js | tap-spec",
+    "posttest": "nyc report",
+    "coverage":  "nyc report --reporter=text-lcov | coveralls"
+  }
 }

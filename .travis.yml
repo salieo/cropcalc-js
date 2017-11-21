@@ -6,6 +6,12 @@ node_js:
 notifications:
   email: false
 
+scripts:
+  - npm run test --silent
+
+after_success: 
+  - npm run coverage
+
 deploy:
   provider: npm
   email: "hello@salieo.com"

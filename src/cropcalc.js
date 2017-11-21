@@ -112,7 +112,9 @@ function findBestCrop(crops, fallbackCrops, targetWidthPercent, targetHeightPerc
 
     if (options["zoom"] !== "max") {
         var finalScaleFactor = Math.max((lastCropWidth / subjWidthPercent), (lastCropHeight / subjHeightPercent));
-        if (typeof options["zoom"] === "number") {
+        if(!options["zoom"]) {
+            finalScaleFactor = Infinity;
+        } else if (typeof options["zoom"] === "number") {
             finalScaleFactor = (1 / options["zoom"]) / (targetWidthPercent * targetHeightPercent);
         } else if (options["zoom"] === "focus-fit") {
             if(options["focus-region"]["horizontal"]) {
@@ -128,7 +130,7 @@ function findBestCrop(crops, fallbackCrops, targetWidthPercent, targetHeightPerc
                 finalScaleFactor = Math.min(finalScaleFactor, (1 - centerY) / (bottomPercentage * targetHeightPercent), (centerY) / (topPercentage * targetHeightPercent));
             }
         }
-        finalScaleFactor = Math.max(1, Math.min((1 / Math.max(targetHeightPercent, targetWidthPercent)), finalScaleFactor));
+        finalScaleFactor = Math.max(1, Math.min(1 / Math.max(targetHeightPercent, targetWidthPercent), finalScaleFactor));
 
         subjWidthPercent *= finalScaleFactor;
         subjHeightPercent *= finalScaleFactor;
@@ -246,7 +248,6 @@ function findCrop(dataPassed, userOptions) {
         }
     }
 
-    //Add fallback crops to suggested crops if extreme-zoom is enabled  
     data["suggested-crops"].sortOn("id");
     data["fallback-crops"].sortOn("id");
     convertDataToPercent(data, data["original-width"], data["original-height"]);
