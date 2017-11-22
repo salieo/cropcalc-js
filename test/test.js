@@ -74,6 +74,36 @@ test('data1 400x400 zoom-on actual-width actual-height', (t) => {
     testCrop(t, data1, options, expected);
 });
 
+test('data1 400x400 zoom-on focus-horizontal', (t) => {
+    const options = {
+        "target-width": 400,
+        "target-height": 400,
+        "focus-region": {
+            "x1": 200,
+            "x2": 400
+        },
+        "zoom": true
+    };
+    const expected = {x1: 476, y1: 0, x2: 1922, y2: 1446};
+
+    testCrop(t, data1, options, expected);
+});
+
+test('data1 400x400 zoom-on focus-vertical', (t) => {
+    const options = {
+        "target-width": 400,
+        "target-height": 400,
+        "focus-region": {
+            "y1": 200,
+            "y2": 400
+        },
+        "zoom": true
+    };
+    const expected = {x1: 552, y1: 0, x2: 1998, y2: 1446};
+
+    testCrop(t, data1, options, expected);
+});
+
 test('data1 400x800 zoom-on', (t) => {
     const options = {
         "target-width": 400,
