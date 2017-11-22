@@ -125,3 +125,15 @@ test('data1 800x400 zoom-on', (t) => {
 
     testCrop(t, data1, options, expected);
 });
+
+test('data1 2000x2000 zoom-on', (t) => {
+    //Ask for too large a crop - should be scaled down to max possible size
+    const options = {
+        "target-width": 2000,
+        "target-height": 2000,
+        "zoom": true
+    };
+    const expected = {x1: 552, y1: 0, x2: 1998, y2: 1446};
+
+    testCrop(t, data1, options, expected);
+});
