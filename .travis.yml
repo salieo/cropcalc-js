@@ -6,6 +6,10 @@ node_js:
 notifications:
   email: false
 
+cache:
+  directories:
+    - "node_modules"
+
 scripts:
   - npm run test --silent
 
