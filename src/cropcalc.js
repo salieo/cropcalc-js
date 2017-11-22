@@ -1,7 +1,3 @@
-if (!Math.log10) Math.log10 = function (t) {
-    return Math.log(t) / Math.LN10;
-};
-
 Array.prototype.sortOn = function (key) {
     this.sort(function (a, b) {
         if (a[key] < b[key]) {
@@ -21,10 +17,6 @@ function copy(o) {
         out[key] = (typeof v === "object") ? copy(v) : v;
     }
     return out;
-}
-
-function round(value, decimals) {
-    return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }
 
 function setOpts(standard, user) {
@@ -179,14 +171,6 @@ function convertCropToPixels(crop, actualWidth, actualHeight) {
     crop["y2"] = Math.round(crop["y2"] * actualHeight);
 }
 
-function convertCropToPercent(crop, actualWidth, actualHeight) {
-    var nessecaryDecimals = Math.ceil(Math.log10(Math.max(actualWidth, actualHeight))) - 2;
-    crop["x1"] = Math.round(crop["x1"].toPrecision(nessecaryDecimals + 2) * 100, nessecaryDecimals);
-    crop["x2"] = Math.round(crop["x2"].toPrecision(nessecaryDecimals + 2) * 100, nessecaryDecimals);
-    crop["y1"] = Math.round(crop["y1"].toPrecision(nessecaryDecimals + 2) * 100, nessecaryDecimals);
-    crop["y2"] = Math.round(crop["y2"].toPrecision(nessecaryDecimals + 2) * 100, nessecaryDecimals);
-}
-
 function validateInput(dataPassed, userOptions) {
     if(!dataPassed || !userOptions) {
         throw new Error("Missing Salieo API data and/or crop options!");
@@ -204,7 +188,6 @@ function findCrop(dataPassed, userOptions) {
     validateInput(data, userOptions);
 
     var options = {
-        "output-units": "pixel",
         "zoom": true
     }
     setOpts(options, userOptions);
@@ -254,11 +237,9 @@ function findCrop(dataPassed, userOptions) {
 
     var finalCrop = findBestCrop(data["suggested-crops"], data["fallback-crops"], targetWidthPercent, targetHeightPercent, subjWidthPercent, subjHeightPercent, subjXShift, subjYShift, options);
 
-    if (options["output-units"] == "pixel") {
-        convertCropToPixels(finalCrop, options["actual-width"], options["actual-height"]);
-    } else {
-        convertCropToPercent(finalCrop, options["actual-width"], options["actual-height"]);
-    }
+    //Convert from percentage values to pixels for output
+    convertCropToPixels(finalCrop, options["actual-width"], options["actual-height"]);
+
     return finalCrop;
 }
 
