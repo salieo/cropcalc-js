@@ -59,7 +59,7 @@ var options = {
 ```
 
 ### actual_width, actual_height
-Actual width and height represent the dimensions of the image being cropped in px. If these are not specified they are assumed to be equal to the *orig_width* and *orig_height* properties returned by the Salieo API (and passed through [salieoData](#api)).
+Actual width and height represent the dimensions of the image being cropped in px. If these are not specified they are assumed to be equal to the *orig_width* and *orig_height* properties returned by the Salieo API.
 
 You would want to specify these if you are cropping a scaled version of the image that was processed by the Salieo API (i.e. the dimensions of the image you processed by the Salieo API and the dimensions of the image you want to generate a crop for are different - they have been scaled up/down).
 
@@ -158,4 +158,10 @@ var options = {
     ...
 };
 ```
+
+## Licence
+
+MIT. © 2017 Salieo
+
+![Certified Awesome](https://img.shields.io/badge/certified-awesome-orange.svg?style=flat-square)
 
