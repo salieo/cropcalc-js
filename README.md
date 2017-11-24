@@ -12,7 +12,7 @@ npm install cropcalc-js
 
 ## Getting Started
 
-We'll use the single exposed function from cropcalc-js (`findCrop()`) in an example:
+We'll use the single exposed function from cropcalc-js `findCrop()` in an example:
 
 ```
 const cropcalc = require('cropcalc-js');
@@ -41,7 +41,8 @@ Find the best crop based on data returned from the Salieo API for an image.
 
 **options**: [options](#Options)
 
-***Returns***: Object representing best crop. Example: `{x1: 100, y1: 0, x2: 800, y2: 550}`. *Note*: In many cases the crop returned will *not* have the same width and height as requested by [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). The width and height of the crop returned will *never* be smaller than the [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*) and will *always* maintain the original ratio between the [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). If the crop returned is larger than requested this indicates that a larger portion of the image should be cropped to and then scaled down to meet the original [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). More information about this can be found in the [zoom](#zoom) option description.
+***Returns***: Object representing best crop. Example: `{x1: 100, y1: 0, x2: 800, y2: 550}`.
+*Note*: In many cases the crop returned will *not* have the same width and height as requested by [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). The width and height of the crop returned will *never* be smaller than the [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*) and will *always* maintain the original ratio between the [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). If the crop returned is larger than requested this indicates that a larger portion of the image should be cropped to and then scaled down to meet the original [*target_width*](#target_width*,target_height*) and [*target_height*](#target_width*,target_height*). More information about this can be found in the [zoom](#zoom) option description.
 
 ## Options
 
@@ -101,13 +102,13 @@ The **focus** option allows the desired location of the subject in the resulting
 
 The **focus** option can be set with an object containing the following properties specifying the sides of the focus region (in px):
 
-`x1`: Left side - defaults to 0
-`x2`: Right side - defaults to [*target_width*](#target_width*,target_height*)
-`y1`: Top side - defaults to 0
+`x1`: Left side - defaults to 0  
+`x2`: Right side - defaults to [*target_width*](#target_width*,target_height*)  
+`y1`: Top side - defaults to 0  
 `y2`: Bottom side - defaults to [*target_height*](#target_width*,target_height*)
 
-*Note*: The following must be true:
-0 <= `x1` < `x2` <= [*target_width*](#target_width*,target_height*)
+*Note*: The following must be true:  
+0 <= `x1` < `x2` <= [*target_width*](#target_width*,target_height*)  
 0 <= `y1` < `y2` <= [*target_height*](#target_width*,target_height*)
 
 If the entire **focus** option is left unset all **focus** properties listed above will remain set to their defaults (making the focus region the entire crop).
