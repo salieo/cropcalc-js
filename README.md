@@ -39,9 +39,9 @@ Find the best crop based on data returned from the Salieo API for an image.
 
 **salieoData**: Data returned from the Salieo API for an image. *Note:* Don't pass the JSON string, pass the parsed object.
 
-**options**: [options](#Options)
+**options**: [Options](#options)
 
-***Returns***: Object representing best crop. Example: `{x1: 100, y1: 0, x2: 800, y2: 550}`.
+***Returns***: Object representing best crop. Example: `{x1: 100, y1: 0, x2: 800, y2: 550}`.  
 *Note*: In many cases the crop returned will *not* have the same width and height as requested by [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-). The width and height of the crop returned will *never* be smaller than the [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) and will *always* maintain the original ratio between the [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-). If the crop returned is larger than requested this indicates that a larger portion of the image should be cropped to and then scaled down to meet the original [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-). More information about this can be found in the [zoom](#zoom) option description.
 
 ## Options
@@ -59,7 +59,7 @@ var options = {
 ```
 
 ### actual_width, actual_height
-Actual width and height represent the dimensions of the image being cropped in px. If these are not specified they are assumed to be equal to the *orig_width* and *orig_height* properties returned by the Salieo API (and passed through [salieoData](#salieoData)).
+Actual width and height represent the dimensions of the image being cropped in px. If these are not specified they are assumed to be equal to the *orig_width* and *orig_height* properties returned by the Salieo API (and passed through [salieoData](#api)).
 
 You would want to specify these if you are cropping a scaled version of the image that was processed by the Salieo API (i.e. the dimensions of the image you processed by the Salieo API and the dimensions of the image you want to generate a crop for are different - they have been scaled up/down).
 
@@ -92,13 +92,13 @@ The generated crop dimensions will be equal to the [*target_width*](#target_widt
 In short, setting **zoom** to `"auto"` attempts to zoom as much as possible while retaining the most important parts of the image.
 
 #### `"max"`
-This **zoom** setting is similar to [`"auto"`](#"auto") except the generated crop dimensions will *always* be equal to [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) - in other words this generates the most scaled crop out of all **zoom** options. The resulting crop will not be scaled in order to retain the smallest suggested crop.
+This **zoom** setting is similar to [`"auto"`](#auto) except the generated crop dimensions will *always* be equal to [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) - in other words this generates the most scaled crop out of all **zoom** options. The resulting crop will not be scaled in order to retain the smallest suggested crop.
 
 #### `"focus"`
-The `"focus"` setting should only be used when a [focus region](#focus) is specified. This option is similar to [`"auto"`](#"auto") except that when attempting to contain the smallest suggested crop in the focus region - the whole crop will be scaled up only as much as allows the subject to remain in the center of the focus region.
+The `"focus"` setting should only be used when a [focus region](#focus-1) is specified. This option is similar to [`"auto"`](#auto) except that when attempting to contain the smallest suggested crop in the focus region - the whole crop will be scaled up only as much as allows the subject to remain in the center of the focus region.
 
 ### focus
-The **focus** option allows the desired location of the subject in the resulting crop to be specified. The aim is always to position the subject as close to the center of the focus region as possible. The **zoom** option [`"focus"`](#"focus") can also be set in conjunction with this option to attempt to adjust the scale of the crop to properly accomodate the subject within the focus region.
+The **focus** option allows the desired location of the subject in the resulting crop to be specified. The aim is always to position the subject as close to the center of the focus region as possible. The **zoom** option [`"focus"`](#focus) can also be set in conjunction with this option to attempt to adjust the scale of the crop to properly accomodate the subject within the focus region.
 
 The **focus** option can be set with an object containing the following properties specifying the sides of the focus region (in px):
 
