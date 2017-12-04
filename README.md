@@ -92,10 +92,13 @@ The generated crop dimensions will be equal to the [*target_width*](#target_widt
 In short, setting **zoom** to `"auto"` attempts to zoom as much as possible while retaining the most important parts of the image.
 
 #### `"max"`
-This **zoom** setting is similar to [`"auto"`](#auto) except the generated crop dimensions will *always* be equal to [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) - in other words this generates the most scaled crop out of all **zoom** options. The resulting crop will not be scaled in order to retain the smallest suggested crop.
+This setting is similar to [`"auto"`](#auto) except the generated crop dimensions will *always* be equal to [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) - in other words this generates the most scaled crop out of all **zoom** options. The resulting crop will not be scaled in order to retain the smallest suggested crop.
 
 #### `"focus"`
-The `"focus"` setting should only be used when a [focus region](#focus-1) is specified. This option is similar to [`"auto"`](#auto) except that when attempting to contain the smallest suggested crop in the focus region - the whole crop will be scaled up only as much as allows the subject to remain in the center of the focus region.
+The `"focus"` setting should only be used when a [focus region](#focus-1) is specified. This setting will zoom the image only as much as is nessecary to position the subject in the middle of the [focus region](#focus-1).
+
+#### `"focus-auto"`
+The `"focus-auto"` setting should only be used when a [focus region](#focus-1) is specified. This setting takes the maximum zoom as defined by [`"focus"`](#focus) or [`"auto"`](#auto) (whichever is greater).
 
 ### focus
 The **focus** option allows the desired location of the subject in the resulting crop to be specified. The aim is always to position the subject as close to the center of the focus region as possible. The **zoom** option [`"focus"`](#focus) can also be set in conjunction with this option to attempt to adjust the scale of the crop to properly accomodate the subject within the focus region.

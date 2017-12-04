@@ -76,7 +76,7 @@ test('data1 400x400 zoom-auto actual-width actual-height', (t) => {
     testCrop(t, data1, options, expected);
 });
 
-test('data1 400x400 zoom-focus focus-horizontal', (t) => {
+test('data1 400x400 zoom-focus-auto focus-horizontal', (t) => {
     const options = {
         target_width: 400,
         target_height: 400,
@@ -84,9 +84,24 @@ test('data1 400x400 zoom-focus focus-horizontal', (t) => {
             x1: 200,
             x2: 300
         },
-        zoom: "focus"
+        zoom: "focus-auto"
     };
     const expected = {x1: 828, y1: 274, x2: 2000, y2: 1446};
+
+    testCrop(t, data1, options, expected);
+});
+
+test('data1 400x400 zoom-focus-auto focus-vertical', (t) => {
+    const options = {
+        target_width: 400,
+        target_height: 400,
+        focus: {
+            y1: 200,
+            y2: 300
+        },
+        zoom: "focus-auto"
+    };
+    const expected = {x1: 691, y1: 0, x2: 1998, y2: 1307};
 
     testCrop(t, data1, options, expected);
 });
@@ -96,12 +111,11 @@ test('data1 400x400 zoom-focus focus-vertical', (t) => {
         target_width: 400,
         target_height: 400,
         focus: {
-            y1: 200,
-            y2: 300
+            y1: 50
         },
-        zoom: "focus"
+        zoom: "focus-auto"
     };
-    const expected = {x1: 691, y1: 0, x2: 1998, y2: 1307};
+    const expected = {x1: 560, y1: 8, x2: 1998, y2: 1446};
 
     testCrop(t, data1, options, expected);
 });

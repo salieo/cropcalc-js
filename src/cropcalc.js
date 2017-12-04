@@ -103,12 +103,15 @@ function findBestCrop(crops, fallbackCrops, targetWidthPercent, targetHeightPerc
     var allCrops = crops.concat(fallbackCrops);
 
     if (options.zoom !== "max") {
-        var finalScaleFactor = Math.max((lastCropWidth / subjWidthPercent), (lastCropHeight / subjHeightPercent));
-        if(!options.zoom) {
-            finalScaleFactor = Infinity;
-        } else if (typeof options.zoom === "number") {
+        var finalScaleFactor = Infinity;
+        if(options.zoom === "auto") {
+            finalScaleFactor = Math.max((lastCropWidth / subjWidthPercent), (lastCropHeight / subjHeightPercent));
+        } else if (options.zoom && typeof options.zoom === "number") {
             finalScaleFactor = (1 / options.zoom) / (targetWidthPercent * targetHeightPercent);
-        } else if (options.zoom === "focus") {
+        } else if (typeof options.zoom === "string" && options.zoom.startsWith("focus")) {
+            if(options.zoom.endsWith("auto")) {
+                finalScaleFactor = Math.max((lastCropWidth / subjWidthPercent), (lastCropHeight / subjHeightPercent));
+            }
             if(subjWidthPercent !== targetWidthPercent) { //Check to see if a focus region has been specified for horizontal direction
                 var leftPercentage = 0.5 - (subjXShift / targetWidthPercent);
                 var rightPercentage = 1 - leftPercentage;
