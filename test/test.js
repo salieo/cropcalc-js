@@ -113,7 +113,7 @@ test('data1 400x400 zoom-focus focus-vertical', (t) => {
         focus: {
             y1: 50
         },
-        zoom: "focus-auto"
+        zoom: "focus"
     };
     const expected = {x1: 560, y1: 8, x2: 1998, y2: 1446};
 
