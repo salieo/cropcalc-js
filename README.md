@@ -6,7 +6,7 @@ Custom crop calculation based on data from the [Salieo API](https://www.salieo.c
 
 ## Install
 
-```
+```shell
 npm install cropcalc-js
 ```
 
@@ -14,7 +14,7 @@ npm install cropcalc-js
 
 We'll use the single exposed function from cropcalc-js `findCrop()` in an example:
 
-```
+```javascript
 const cropcalc = require('cropcalc-js');
 
 var salieoData = {crops:{suggested:[{id:1,x1:800,x2:1500,y1:450,y2:800}],fallback:[]},orig_width:1600,orig_height:800};
@@ -51,7 +51,7 @@ Required options have a *
 ### target_width *, target_height *
 Target width and height are the only two required options. All others are optional. They represent the desired demensions of the final crop in px.
 
-```
+```javascript
 var options = {
     target_width: 800
     target_height: 400
@@ -63,7 +63,7 @@ Actual width and height represent the dimensions of the image being cropped in p
 
 You would want to specify these if you are cropping a scaled version of the image that was processed by the Salieo API (i.e. the dimensions of the image you processed by the Salieo API and the dimensions of the image you want to generate a crop for are different - they have been scaled up/down).
 
-```
+```javascript
 var options = {
     actual_width: 800
     actual_height: 400
@@ -74,7 +74,7 @@ var options = {
 ### zoom
 If unspecified, defaults to `false`.
 
-```
+```javascript
 var options = {
     zoom: false
     ...
@@ -121,7 +121,7 @@ If the entire **focus** option is left unset, all **focus** properties listed ab
 
 1. Sets the focus region to the right half of the crop:
 
-```
+```javascript
 var options = {
     target_width: 800
     target_height 400
@@ -134,7 +134,7 @@ var options = {
 
 2. Sets the focus region to the top left quarter of the crop:
 
-```
+```javascript
 var options = {
     target_width: 800
     target_height 400
@@ -148,7 +148,7 @@ var options = {
 
 2. Sets the focus region to a small square near the center right of the crop:
 
-```
+```javascript
 var options = {
     target_width: 800
     target_height 400
