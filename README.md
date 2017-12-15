@@ -30,7 +30,7 @@ console.log(customCrop);
 //Output: {x1: 750, x2: 1550, y1: 400, y2: 800}
 ```
 
-Note that in production you would pass the data recieved from the Salieo API for the image you want to crop in place of `salieoData` (after parsing the JSON). In this example, `salieoData` has been initialized with sample data.
+Note that in production you would pass the data received from the Salieo API for the image you want to crop in place of `salieoData` (after parsing the JSON). In this example, `salieoData` has been initialized with sample data.
 
 ## API
 
@@ -49,7 +49,7 @@ Find the best crop based on data returned from the Salieo API for an image.
 Required options have a *
 
 ### target_width *, target_height *
-Target width and height are the only two required options. All others are optional. They represent the desired demensions of the final crop in px.
+Target width and height are the only two required options. All others are optional. They represent the desired dimensions of the final crop in px.
 
 ```javascript
 var options = {
@@ -95,13 +95,13 @@ In short, setting **zoom** to `"auto"` attempts to zoom as much as possible whil
 This setting is similar to [`"auto"`](#auto) except the generated crop dimensions will *always* be equal to [*target_width*](#target_width--target_height-) and [*target_height*](#target_width--target_height-) - in other words this generates the most scaled crop out of all **zoom** options. The resulting crop will not be scaled in order to retain the smallest suggested crop.
 
 #### `"focus"`
-The `"focus"` setting should only be used when a [focus region](#focus-1) is specified. This setting will zoom the image only as much as is nessecary to position the subject in the middle of the [focus region](#focus-1).
+The `"focus"` setting should only be used when a [focus region](#focus-1) is specified. This setting will zoom the image only as much as is necessary to position the subject in the middle of the [focus region](#focus-1).
 
 #### `"focus-auto"`
 The `"focus-auto"` setting should only be used when a [focus region](#focus-1) is specified. This setting takes the maximum zoom as defined by [`"focus"`](#focus) or [`"auto"`](#auto) (whichever is greater).
 
 ### focus
-The **focus** option allows the desired location of the subject in the resulting crop to be specified. The aim is always to position the subject as close to the center of the focus region as possible. The **zoom** option [`"focus"`](#focus) can also be set in conjunction with this option to attempt to adjust the scale of the crop to properly accomodate the subject within the focus region.
+The **focus** option allows the desired location of the subject in the resulting crop to be specified. The aim is always to position the subject as close to the center of the focus region as possible. The **zoom** option [`"focus"`](#focus) can also be set in conjunction with this option to attempt to adjust the scale of the crop to properly accommodate the subject within the focus region.
 
 The **focus** option can be set with an object containing the following properties specifying the sides of the focus region (in px):
 
